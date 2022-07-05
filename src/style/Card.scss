@@ -1,0 +1,28 @@
+.card {
+    padding: 10px 20px 20px;
+    border: 1px solid #000;
+    border-radius: 3px;
+
+    &-header {
+        display: flex;
+        align-items: center;
+    }
+
+    &-condition {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: auto;
+    }
+    
+    &-content {
+        margin-top: 20px;
+        display: flex;
+    }
+
+    &-temp{ 
+        font-size: 30px;
+        margin-left: auto;
+    }
+
+}

@@ -1,0 +1,16 @@
+.forecast {
+    margin-top: 20px;
+    display: flex;
+    list-style-type: none;
+
+    &-item {
+        padding: 10px;
+        border: 1px solid #000;
+        border-radius: 3px;
+        margin-right: 10px;
+    }
+
+    &-day {
+        margin-bottom: 10px;
+    }
+}
