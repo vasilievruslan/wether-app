@@ -43,13 +43,11 @@ function App() {
 
 
   return (<div className="wether-app">
-  <div className="header">
     <SearchInput onChange={onCityChanged}></SearchInput>
 
     {(state.location && state.current) && <Card location={state.location} current={state.current}></Card>}
 
     {!!state.forecast.length && <Forecast forecast={state.forecast}></Forecast>}
-  </div>
 </div>);
 }
 

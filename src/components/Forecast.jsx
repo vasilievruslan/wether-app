@@ -6,10 +6,10 @@ function Forecast({ forecast }) {
 
     return ( 
         <ul className="forecast">
-            {forecast.map(({ day, date }) => 
-                <li className="forecast-item">
-                    <div className="foracast-day">{getDateString(date)}</div>
-                    <div className="forecast-temp">{day.avgtemp_c}</div>
+            {forecast.map(({ day, date, date_epoch }) => 
+                <li key={date_epoch} className="forecast-item">
+                    <div className="forecast-day">{getDateString(date)}</div>
+                    <div className="forecast-temp">{day.avgtemp_c}&#176;</div>
                     <div className="forecast-condition">
                         <img className="forecast-condition-icon" src={day.condition.icon} alt={day.condition.text} />
                         <span className="forecast-condition-text">{day.condition.text}</span>

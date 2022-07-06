@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -8,7 +9,12 @@ body {
 }
 
 .wether-app {
-    max-width: 420px;
+    max-width: 540px;
     margin: 0 auto;
     padding: 20px;
+    display: grid;
+    grid-template-areas: "s s s s"
+                         "c c c d"
+                         "h h h d";
+    grid-gap: 20px;
 }

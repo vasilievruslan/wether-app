@@ -6,7 +6,7 @@ const getCurrentWether = async (city) => {
         .then(data => data.json())
 }
 
-const getForecast = async (city) => await fetch(`${endpoint}forecast.json?key=${API_KEY}&q=${city}&days=7&aqi=no&alerts=no
+const getForecast = async (city) => await fetch(`${endpoint}forecast.json?key=${API_KEY}&q=${city}&days=10&aqi=no&alerts=no
 `).then(data => data.json())
 
 const search = async (query) => await fetch(`${endpoint}search.json?key=${API_KEY}&q=${query}`).then(data => data.json())

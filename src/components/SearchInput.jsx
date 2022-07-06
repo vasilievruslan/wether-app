@@ -8,14 +8,14 @@ function SearchInput({ onChange }) {
     const [searchResults, setSearchResults] = useState([]);
 
     const debouncedSearch = debounce((value) => {
-        search(value).then((res) => {
+        if (value) search(value).then((res) => {
             setSearchResults(res)
         })
     }, 500);
 
     const handleChange = (e) => {
-        debouncedSearch(e.target.value)
         setQuery(e.target.value)
+        debouncedSearch(e.target.value)
     }
 
     const setCity = (city) => {

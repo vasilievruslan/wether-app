@@ -1,16 +1,35 @@
 .forecast {
-    margin-top: 20px;
     display: flex;
+    flex-direction: column;
     list-style-type: none;
+    grid-area: d;
 
     &-item {
         padding: 10px;
         border: 1px solid #000;
         border-radius: 3px;
-        margin-right: 10px;
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
     }
 
     &-day {
         margin-bottom: 10px;
+    }
+
+    &-temp {
+        font-size: 20px;
+    }
+    &-condition {
+        display: flex;
+        align-items: center;
+
+        &-icon {
+            width: 30px;
+        }
+
+        &-text {
+            font-size: 14px;
+        }
     }
 }
