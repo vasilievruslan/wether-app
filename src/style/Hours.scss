@@ -1,0 +1,33 @@
+.hours {
+    overflow-x: scroll;
+    grid-area: h;
+
+    &-list {
+        display: flex;
+        list-style-type: none;
+        height: 100%;
+    }
+
+    &-item {
+        min-width: 77px;
+        border-radius: 3px;
+        border: 1px solid #000;
+        padding: 10px;
+
+        &:not(:last-child) {
+            margin-right: 10px;
+        }
+    }
+
+    &-temp {
+        font-size: 20px;
+        margin-top: 5px;
+    }
+
+    &-condition {
+
+        &-icon {
+            width: 30px;
+        }
+    }
+}
