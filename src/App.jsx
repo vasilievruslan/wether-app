@@ -14,14 +14,26 @@ function App() {
     hours: [],
   })
 
-  const onCityChanged = async (city) => {
-    const {current, forecast, location} = await getForecast(city.name);
+  const setData = ({current, forecast, location}) => {
+    const removeExpiredHours = () => {
+      const currentTime = new Date().getHours() + ':00';
+      const hoursArr = forecast.forecastday[0].hour;
+      const arrStart = hoursArr.find(el => el.time.split(' ')[1] === currentTime);
+      return hoursArr.slice(hoursArr.indexOf(arrStart), hoursArr.length + 1);
+    }
+
+    removeExpiredHours()
     setState({
-      current, 
+      current,
       location,
       forecast: forecast.forecastday,
-      hours: forecast.forecastday[0].hour,
+      hours: removeExpiredHours(),
     })
+  }
+
+  const onCityChanged = async (city) => {
+    const data = await getForecast(city.name);
+    setData(data);
   }
 
   const getCurrentPosition = () => new Promise((resolve, reject) => {
@@ -32,21 +44,8 @@ function App() {
     const getCurrentPositionWether = async () => {
       const { coords } = await getCurrentPosition()
       
-      const {current, forecast, location} = await getForecast(`${coords.latitude},${coords.longitude}`);
-      const removeExpiredHours = () => {
-        const currentTime = new Date().getHours() + ':00';
-        const hoursArr = forecast.forecastday[0].hour;
-        const arrStart = hoursArr.find(el => el.time.split(' ')[1] === currentTime);
-        return hoursArr.slice(hoursArr.indexOf(arrStart), hoursArr.length + 1);
-      }
-
-      removeExpiredHours()
-      setState({
-        current,
-        location,
-        forecast: forecast.forecastday,
-        hours: removeExpiredHours(),
-      })
+      const data = await getForecast(`${coords.latitude},${coords.longitude}`);
+      setData(data);
 
     }
     
